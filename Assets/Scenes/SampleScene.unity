@@ -276,11 +276,11 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 1000
+  MaxStep: 5000
   target: {fileID: 281084863}
   moveSpeed: 5
   rotateSpeed: 120
-  moveAction: {fileID: 0}
+  dis: 5
 --- !u!114 &68571886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
   m_BrainParameters:
-    VectorObservationSize: 4
+    VectorObservationSize: 2
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -310,7 +310,6 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!114 &68571887
 MonoBehaviour:
@@ -325,7 +324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
-  DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!1 &136049471
 GameObject:
@@ -378,7 +376,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
-  DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!114 &136049474
 MonoBehaviour:
@@ -399,7 +396,7 @@ MonoBehaviour:
   target: {fileID: 825553533}
   moveSpeed: 5
   rotateSpeed: 120
-  moveAction: {fileID: 0}
+  dis: 5
 --- !u!114 &136049475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +426,6 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!54 &136049476
 Rigidbody:
@@ -586,7 +582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
-  DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!114 &163633132
 MonoBehaviour:
@@ -607,7 +602,7 @@ MonoBehaviour:
   target: {fileID: 360954066}
   moveSpeed: 5
   rotateSpeed: 120
-  moveAction: {fileID: 0}
+  dis: 5
 --- !u!114 &163633133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,7 +632,6 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!54 &163633134
 Rigidbody:
@@ -794,7 +788,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
-  DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!114 &237861255
 MonoBehaviour:
@@ -815,7 +808,7 @@ MonoBehaviour:
   target: {fileID: 1501096864}
   moveSpeed: 5
   rotateSpeed: 120
-  moveAction: {fileID: 0}
+  dis: 5
 --- !u!114 &237861256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,7 +838,6 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!54 &237861257
 Rigidbody:
@@ -966,7 +958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &269110919
 Transform:
   m_ObjectHideFlags: 0
@@ -1019,7 +1011,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1395,7 +1387,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
-  DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!114 &389536283
 MonoBehaviour:
@@ -1416,7 +1407,7 @@ MonoBehaviour:
   target: {fileID: 407320935}
   moveSpeed: 5
   rotateSpeed: 120
-  moveAction: {fileID: 0}
+  dis: 5
 --- !u!114 &389536284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,7 +1437,6 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!54 &389536285
 Rigidbody:
@@ -1953,7 +1943,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
-  DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!114 &699752490
 MonoBehaviour:
@@ -1974,7 +1963,7 @@ MonoBehaviour:
   target: {fileID: 1807855636}
   moveSpeed: 5
   rotateSpeed: 120
-  moveAction: {fileID: 0}
+  dis: 5
 --- !u!114 &699752491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2004,7 +1993,6 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!54 &699752492
 Rigidbody:
@@ -2125,7 +2113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &707822189
 Transform:
   m_ObjectHideFlags: 0
@@ -2690,7 +2678,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
-  DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!114 &1042544996
 MonoBehaviour:
@@ -2711,7 +2698,7 @@ MonoBehaviour:
   target: {fileID: 1016398477}
   moveSpeed: 5
   rotateSpeed: 120
-  moveAction: {fileID: 0}
+  dis: 5
 --- !u!114 &1042544997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2741,7 +2728,6 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!54 &1042544998
 Rigidbody:
@@ -3122,7 +3108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
-  DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!114 &1263198909
 MonoBehaviour:
@@ -3143,7 +3128,7 @@ MonoBehaviour:
   target: {fileID: 1778640491}
   moveSpeed: 5
   rotateSpeed: 120
-  moveAction: {fileID: 0}
+  dis: 5
 --- !u!114 &1263198910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3173,7 +3158,6 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!54 &1263198911
 Rigidbody:
@@ -3294,7 +3278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1338590985
 Transform:
   m_ObjectHideFlags: 0
@@ -3474,7 +3458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1455333969
 Transform:
   m_ObjectHideFlags: 0
@@ -3619,7 +3603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1521643746
 Transform:
   m_ObjectHideFlags: 0
@@ -3764,7 +3748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1615208966
 Transform:
   m_ObjectHideFlags: 0
@@ -4168,7 +4152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.DecisionRequester
   DecisionPeriod: 5
-  DecisionStep: 0
   TakeActionsBetweenDecisions: 1
 --- !u!114 &1956225511
 MonoBehaviour:
@@ -4189,7 +4172,7 @@ MonoBehaviour:
   target: {fileID: 1574389597}
   moveSpeed: 5
   rotateSpeed: 120
-  moveAction: {fileID: 0}
+  dis: 5
 --- !u!114 &1956225512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4219,7 +4202,6 @@ MonoBehaviour:
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
-  m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
 --- !u!54 &1956225513
 Rigidbody:
@@ -4564,7 +4546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2088426941
 Transform:
   m_ObjectHideFlags: 0
@@ -4598,7 +4580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2123766359
 Transform:
   m_ObjectHideFlags: 0

@@ -9,16 +9,19 @@ public class SimpleMoveAgent : Agent
     public Transform target;
     public float moveSpeed = 5f;
     public float rotateSpeed = 120f; // degrees per second
+    public float dis = 5f;
     Rigidbody rb;
 
-    // New Input System: 인스펙터에서 할당 (Input Actions asset의 Action 참조)
-    public InputActionReference moveAction; // Vector2 (x: 좌우, y: 앞뒤)
+    private void Start()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
 
     public override void OnEpisodeBegin()
     {
         rb = GetComponent<Rigidbody>();
-        transform.localPosition = new Vector3(Random.Range(-20f, 20f), 0.5f, Random.Range(-20f, 20f));
-        target.localPosition = new Vector3(Random.Range(-20f, 20f), 0.5f, Random.Range(-20f, 20f));
+        transform.localPosition = new Vector3(Random.Range(-dis, dis), 0.5f, Random.Range(-dis, dis));
+        target.localPosition = new Vector3(Random.Range(-dis, dis), 0.5f, Random.Range(-dis, dis));
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
     }
@@ -78,20 +81,19 @@ public class SimpleMoveAgent : Agent
 
         if (target != null)
         {
-            float dist = Vector3.Distance(transform.localPosition, target.localPosition);
-            float reward = -dist * 0.001f;
-            AddReward(reward);
+            float dist = Vector3.Distance(transform.position, target.position);
+            AddReward(-dist * Time.deltaTime * 0.1f);
 
-            if (dist < 0.5f)
+            if (dist < 0.25f)
             {
-                AddReward(5.0f);
+                AddReward(dis * 20.0f);
                 EndEpisode();
             }
         }
 
-        if (Vector3.Distance(transform.position, Vector3.zero) > 21f)
+        if (Vector3.Distance(transform.position, Vector3.zero) > dis + 5f)
         {
-            AddReward(-1.0f);
+            AddReward(-10.0f);
             EndEpisode();
         }
     }
