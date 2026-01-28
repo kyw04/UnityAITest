@@ -7,102 +7,111 @@ using UnityEngine.InputSystem;
 public class SimpleMoveAgent : Agent
 {
     public Transform target;
-    public float moveSpeed = 5f;
-    public float rotateSpeed = 120f; // degrees per second
+    public float moveSpeed = 3f;         // "VelocityChange" 기준이면 너무 크지 않게
+    public float rotateSpeed = 120f;     // deg/sec
     public float dis = 5f;
-    Rigidbody rb;
 
-    private void Start()
+    private Rigidbody rb;
+    private float prevDist;
+
+    public override void Initialize()
     {
+        rb = GetComponent<Rigidbody>();
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
     public override void OnEpisodeBegin()
     {
-        rb = GetComponent<Rigidbody>();
         transform.localPosition = new Vector3(Random.Range(-dis, dis), 0.5f, Random.Range(-dis, dis));
-        target.localPosition = new Vector3(Random.Range(-dis, dis), 0.5f, Random.Range(-dis, dis));
+        transform.localRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+
+        if (target != null)
+            target.localPosition = new Vector3(Random.Range(-dis, dis), 0.5f, Random.Range(-dis, dis));
+
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+
+        prevDist = (target != null) ? Vector3.Distance(transform.position, target.position) : 0f;
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
         if (target == null)
         {
-            sensor.AddObservation(0f);
-            sensor.AddObservation(0f);
+            sensor.AddObservation(Vector3.zero); // rel pos
+            sensor.AddObservation(Vector2.zero); // forward xz
             return;
         }
 
-        Vector3 relPos = target.localPosition - transform.localPosition;
-        sensor.AddObservation(relPos.x);
-        sensor.AddObservation(relPos.z);
+        Vector3 rel = target.position - transform.position;
+        sensor.AddObservation(rel.x);
+        sensor.AddObservation(rel.z);
+
+        // 내 바라보는 방향(회전 상태)도 같이 넣어주면 학습 빨라짐
+        Vector3 f = transform.forward;
+        sensor.AddObservation(f.x);
+        sensor.AddObservation(f.z);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        if (target == null) return;
+
         int action = actions.DiscreteActions[0];
 
-        Vector3 moveDir = Vector3.zero;
         float turn = 0f;
+        float move = 0f;
 
         switch (action)
         {
-            case 0: // no-op
-                break;
-            case 1: // 전진
-                moveDir = transform.forward;
-                break;
-            case 2: // 후진
-                moveDir = -transform.forward;
-                break;
-            case 3: // 우회전
-                turn = 1f;
-                break;
-            case 4: // 좌회전
-                turn = -1f;
-                break;
-            default:
-                break;
+            case 0: break;        // no-op
+            case 1: move = 1f; break;  // forward
+            case 2: move = -1f; break; // backward
+            case 3: turn = 1f; break;  // right
+            case 4: turn = -1f; break; // left
         }
 
-        rb.AddForce(moveDir * 0.5f, ForceMode.VelocityChange);
-        
+        // 회전: Rigidbody로
         if (Mathf.Abs(turn) > 0f)
         {
-            transform.Rotate(Vector3.up, turn * rotateSpeed * Time.deltaTime, Space.Self);
+            Quaternion delta = Quaternion.Euler(0f, turn * rotateSpeed * Time.fixedDeltaTime, 0f);
+            rb.MoveRotation(rb.rotation * delta);
         }
 
-        if (moveDir != Vector3.zero)
+        // 이동: 한 번만, 일관되게
+        if (Mathf.Abs(move) > 0f)
         {
-            rb.AddForce(moveDir.normalized * moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
+            Vector3 vChange = transform.forward * (move * moveSpeed);
+            rb.AddForce(vChange, ForceMode.VelocityChange);
         }
 
-        if (target != null)
-        {
-            float dist = Vector3.Distance(transform.position, target.position);
-            AddReward(-dist * Time.deltaTime * 0.1f);
+        // 보상: "거리 감소" 기반 shaping (안정적)
+        float dist = Vector3.Distance(transform.position, target.position);
+        float distDelta = prevDist - dist;   // 가까워지면 +
+        AddReward(distDelta * 0.5f);
 
-            if (dist < 0.25f)
-            {
-                AddReward(dis * 20.0f);
-                EndEpisode();
-            }
+        // 작은 시간 패널티(빨리 끝내기)
+        AddReward(-0.001f);
+
+        prevDist = dist;
+
+        if (dist < 0.25f)
+        {
+            AddReward(1.0f);
+            EndEpisode();
         }
 
         if (Vector3.Distance(transform.position, Vector3.zero) > dis + 5f)
         {
-            AddReward(-10.0f);
+            AddReward(-1.0f);
             EndEpisode();
         }
     }
 
-    // New Input System 기반 Heuristic
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discrete = actionsOut.DiscreteActions;
-        int act = 0; // 기본 no-op
+        int act = 0;
 
         if (Keyboard.current != null)
         {
