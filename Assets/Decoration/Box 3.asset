@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4979eb7500d3e1647a24b24cc8988d9c, type: 3}
-  m_Name: New Decor Item Definition
+  m_Script: {fileID: 11500000, guid: 69e7cce1ce1bee84192555816daef73b, type: 3}
+  m_Name: Box 3
   m_EditorClassIdentifier: Assembly-CSharp::DecorItemDefinition
-  itemId: box_0
+  itemId: Box_3
   category: 0
-  prefab: {fileID: 6697971963340073055, guid: 7ed7bd142f56c42cdb448a3795a19740, type: 3}
+  prefab: {fileID: 6697971963340073055, guid: d0e15988faef648d7af20a92ac70d628, type: 3}
   allowedSocketTypes: 00000000
   allowRotateY: 1

@@ -1630,7 +1630,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   autoFindSockets: 1
-  sockets: []
+  sockets:
+  - {fileID: 1667715709}
+  - {fileID: 1063496058}
+  - {fileID: 1335421437}
+  - {fileID: 1217831813}
+  - {fileID: 2032868473}
+  - {fileID: 60711605}
+  - {fileID: 1163414049}
+  - {fileID: 1764431078}
+  - {fileID: 1690554783}
+  - {fileID: 1623509136}
+  - {fileID: 1270672493}
+  - {fileID: 927417440}
+  - {fileID: 1073180320}
+  - {fileID: 170143467}
+  - {fileID: 424454499}
+  - {fileID: 38882604}
+  - {fileID: 1700403095}
+  - {fileID: 990191567}
+  - {fileID: 819292770}
+  - {fileID: 767118013}
+  - {fileID: 1601187367}
+  - {fileID: 1969209502}
+  - {fileID: 407938111}
+  - {fileID: 605733937}
+  - {fileID: 1559154038}
 --- !u!114 &1794773843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1644,12 +1669,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DecorCatalog
   items:
-  - {fileID: 11400000, guid: 238f7a41ec43b34419452315f7afe9fb, type: 2}
-  - {fileID: 11400000, guid: 7d553c23e8d8c8443920335a28b2f5b4, type: 2}
-  - {fileID: 11400000, guid: 83434ac6f5e24ee4182c63b059be3827, type: 2}
-  - {fileID: 11400000, guid: c61e8c09bbf2dc94ca282b1cf556bcb3, type: 2}
-  - {fileID: 11400000, guid: eb1e6683173cb0f49a5d951a033c2c7d, type: 2}
-  - {fileID: 11400000, guid: ca0dbb7b5dd54064bbab4ef0d8fc087d, type: 2}
+  - {fileID: 11400000, guid: fbe43ea440485e8408fc4760fb9b9032, type: 2}
+  - {fileID: 11400000, guid: c9833c3c839a5924eb6b36a92539bc1a, type: 2}
+  - {fileID: 11400000, guid: 2135051c911877743b9a98b05dc9687b, type: 2}
+  - {fileID: 11400000, guid: 770aa582427c10943b987911a8b868a8, type: 2}
+  - {fileID: 11400000, guid: e7d3eba4f76a02d49835a915eb01c12b, type: 2}
+  - {fileID: 11400000, guid: 7abab218393db1a48bcf756610dd8416, type: 2}
 --- !u!4 &1794773844
 Transform:
   m_ObjectHideFlags: 0
@@ -1773,7 +1798,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 1
   m_BehaviorName: RoomDecorAgent
   TeamId: 0
   m_UseChildSensors: 1

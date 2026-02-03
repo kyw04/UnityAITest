@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6de474de75f8ad4695919eed85b6123, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c83d28cb6d396d42847a8f82afbb1ac, type: 3}
   m_Name: New Room Decor Settings
   m_EditorClassIdentifier: Assembly-CSharp::RoomDecorSettings
   maxPlacements: 10
@@ -21,5 +21,7 @@ MonoBehaviour:
   stepPenalty: -0.001
   successReward: 0.1
   failPenalty: -0.2
+  rulePenaltyMultiplier: 1
   repeatItemPenaltyBase: -0.02
   finalDiversityBonusMax: 0.5
+  heuristicRandom: 1
